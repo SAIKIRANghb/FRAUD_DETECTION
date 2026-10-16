@@ -1,0 +1,28 @@
+# Fraud detection configuration
+seed: 42
+
+data:
+  output_path: data/elliptic_processed.parquet
+
+features:
+  graph: true
+
+preprocessing:
+  test_size: 0.2
+  val_size: 0.1
+
+business:
+  # cost matrix (USD per decision)
+  cost_false_negative: 250.0   # missed fraud loss (avg fraud amount loss)
+  cost_false_positive: 15.0    # manual review / customer friction
+  review_capacity: 0.1         # fraction of population that can be reviewed
+  intervention_cost: 5.0       # cost to score + intervene per account
+
+mlflow:
+  tracking_uri: file:./mlruns
+  experiment: fraud_graph_detection
+
+mlops:
+  model_name: fraud-graph-model
+  production_metric: expected_cost
+  drift_threshold_psi: 0.25

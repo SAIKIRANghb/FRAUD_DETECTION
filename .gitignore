@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Local environments and secrets
+.venv/
+venv/
+env/
+.env
+
+# Downloaded and processed datasets
+/data/
+
+# Generated models and experiment tracking state
+/artifacts/
+/mlruns/
+/mlruns_artifacts/
+/mlflow.db*
+/gnn_train.log
+
+# Jupyter
+.ipynb_checkpoints/
